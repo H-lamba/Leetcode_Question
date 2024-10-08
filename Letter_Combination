@@ -1,0 +1,121 @@
+# Today we will see a another leetcode problem in which we will perform Letter Combination Of a Phone Number. Given a string containing digits from 2-9 inclusive, return all possible letter combinations 
+# that the number could represent. Return the answer in any order. A mapping of digits to letters (just like on the telephone buttons) is given below. Note that 1 does not map to any letters.
+
+
+class Solution(object):
+    def letterCombinations(self, digits):
+        """
+        :type digits: str
+        :rtype: List[str]
+        """
+        if not digits:
+            return []
+        results = [""]
+        lookup = ["","","abc","def","ghi","jkl","mno","pqrs","tuv","wxyz"]
+        for digit in reversed(digits):
+            choices  = lookup[int(digit)]
+            m,n = len(choices), len(results)
+            results.extend([results[i%n] for i in range(n, m*n)])
+            for i in range(m*n):
+                results[i] = choices[i//n]+ results[i]
+        return results       
+
+Let's walk through the code using a live example with digits "23". This will help demonstrate how the outer and inner loops work together to generate all possible letter combinations.
+
+Input:
+
+digits = "23"
+Step 1: Initial Setup
+result starts as [""] because we begin with an empty combination.
+lookup: The mapping from digits to letters is stored in lookup:
+
+lookup = ["", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"]
+Step 2: Processing the digits in reverse ("32")
+We are now processing the digits in reverse, so we start with the last digit ("3") first.
+
+Iteration 1: Processing digit "3"
+Lookup the letters for digit "3":
+
+
+choices = lookup[3]  # choices = "def"
+Current result: At this point, result is [""].
+
+Outer loop action:
+
+m = 3 (because "def" has 3 letters) and n = 1 (the length of result).
+We need to create space for new combinations by extending result to hold the new letters:
+
+result.extend([result[i % n] for i in range(n, m * n)])
+This extends result to become: ["", "", ""] (three empty spaces to hold combinations).
+Inner loop action: Now, we run the inner loop to append the letters from "def" to each combination:
+
+
+for i in range(m * n):  # m * n = 3 * 1 = 3
+    result[i] = choices[i // n] + result[i]
+When i = 0:
+choices[i // n] = choices[0 // 1] = choices[0] = "d".
+result[0] = "d" + "" = "d".
+When i = 1:
+choices[i // n] = choices[1 // 1] = choices[1] = "e".
+result[1] = "e" + "" = "e".
+When i = 2:
+choices[i // n] = choices[2 // 1] = choices[2] = "f".
+result[2] = "f" + "" = "f".
+After processing digit "3": The result is now:
+
+
+result = ["d", "e", "f"]
+Iteration 2: Processing digit "2"
+Lookup the letters for digit "2":
+
+choices = lookup[2]  # choices = "abc"
+Current result: At this point, result is ["d", "e", "f"].
+
+Outer loop action:
+
+m = 3 (because "abc" has 3 letters) and n = 3 (the length of result is 3).
+We extend result to make space for the new combinations:
+
+result.extend([result[i % n] for i in range(n, m * n)])
+This extends result to: ["d", "e", "f", "d", "e", "f", "d", "e", "f"] (three copies of the original ["d", "e", "f"] to hold combinations).
+Inner loop action: Now, we run the inner loop to prepend the letters from "abc" to each combination:
+
+
+for i in range(m * n):  # m * n = 3 * 3 = 9
+    result[i] = choices[i // n] + result[i]
+When i = 0:
+choices[i // n] = choices[0 // 3] = choices[0] = "a".
+result[0] = "a" + "d" = "ad".
+When i = 1:
+choices[i // n] = choices[1 // 3] = choices[0] = "a".
+result[1] = "a" + "e" = "ae".
+When i = 2:
+choices[i // n] = choices[2 // 3] = choices[0] = "a".
+result[2] = "a" + "f" = "af".
+When i = 3:
+choices[i // n] = choices[3 // 3] = choices[1] = "b".
+result[3] = "b" + "d" = "bd".
+When i = 4:
+choices[i // n] = choices[4 // 3] = choices[1] = "b".
+result[4] = "b" + "e" = "be".
+When i = 5:
+choices[i // n] = choices[5 // 3] = choices[1] = "b".
+result[5] = "b" + "f" = "bf".
+When i = 6:
+choices[i // n] = choices[6 // 3] = choices[2] = "c".
+result[6] = "c" + "d" = "cd".
+When i = 7:
+choices[i // n] = choices[7 // 3] = choices[2] = "c".
+result[7] = "c" + "e" = "ce".
+When i = 8:
+choices[i // n] = choices[8 // 3] = choices[2] = "c".
+result[8] = "c" + "f" = "cf".
+After processing digit "2": The final result is:
+
+result = ["ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"]
+Final Output:
+The final output is the list of all possible letter combinations corresponding to the input digits "23":
+
+
+["ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"]
+This example illustrates how the outer loop processes each digit (in reverse order) and how the inner loop builds all the possible letter combinations by extending the result list and prepending letters from the current digit's corresponding choices.
