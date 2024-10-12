@@ -1,0 +1,68 @@
+# Implement pow(x, n), which calculates x raised to the power n (i.e., x^n).
+
+Pyhton :- 
+
+class Solution(object):
+    def myPow(self, x, n):
+        """
+        :type x: float
+        :type n: int
+        :rtype: float
+        """
+        return x**n 
+
+## This is the solution for the given problem statement in python
+
+class Solution(object):
+    def myPow(self, x, n):
+        """
+        :type x: float
+        :type n: int
+        :rtype: float
+        """
+        p = 1
+        if(n==0):
+            return 1
+        else:
+            y = abs(n)
+            for i in range(y):
+                p = p*x
+            if(n>0):
+                return p
+            else:
+                return 1/p
+  ## This also can be the solution for the same problem but leetcode will not accept it as solution it will give a error named Memory Limit Exceeded
+
+
+
+C++ Solution:- 
+
+class Solution {
+public:
+    double myPow(double x, int n) {
+       double p = 1;
+       int z = n;
+       if(n==0 || x ==1)
+       return 1;
+       else
+       {
+        while(n!= 0)
+        {
+            p = p*x;
+            if(n<0)
+            n++;
+            if(n>0)
+            n--;
+        }
+        if(z<0)
+        return 1/p;
+        return p;
+       }
+        
+    }
+};
+
+## This is the Solution for C++ language. Although this is correct code, leetcode will not accept it as solution it will give error as time limit Exceeded. I don't know how to resolve this issue. If u guys have
+## any idea how to solve this problem plzz feel free to contact.
+        
+    
