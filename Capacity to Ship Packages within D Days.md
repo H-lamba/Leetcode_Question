@@ -61,7 +61,7 @@ We perform a binary search between these bounds and check if the mid-value is a 
 If the mid-value works, we try a smaller value to find the minimum capacity. Otherwise, we increase the capacity.
 
 ### Implementation
-```
+``` cpp
 class Solution {
 public:
     int lows(vector<int> & weights)
