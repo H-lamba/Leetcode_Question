@@ -1,6 +1,7 @@
 # Balanced Binart Tree
 
 Given a binary tree, determine if it is height-balanced.
+
 ![image](https://github.com/user-attachments/assets/53f577a2-2f7c-4532-b140-20993ba157fc)
 ```
 Input: root = [3,9,20,null,null,15,7]
