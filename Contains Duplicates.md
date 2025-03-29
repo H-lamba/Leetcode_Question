@@ -2,7 +2,7 @@
 
 **Statement** :- Given an integer array nums and an integer k, return true if there are two distinct indices i and j in the array such that nums[i] == nums[j] and abs(i - j) <= k.
 
-**Examples :- **
+**Examples :-**
 ```
 Example 1:
 
@@ -47,7 +47,7 @@ public:
 
 **Complexity :-**
 - *Time Complexity :-* O(n^2)
-- *Space Complexity :- * O(1)
+- *Space Complexity :-* O(1)
 
 Thanks for visiting 😊
 Feell free to contact ;
