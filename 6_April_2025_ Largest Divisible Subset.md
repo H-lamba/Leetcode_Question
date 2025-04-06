@@ -20,16 +20,20 @@ Output: [1,2,4,8]
 
 ```
 
-**Approach**
 
-Step	Action
-1	    Sort the array
-2	    Loop through each number as starting point
-3	    Try building a divisible subset from that point
-4	    Store all such subsets
-5	    Print them for debugging
-6	    Select the longest one
-7	    Return that as the final result
+
+## 📋 Approach Steps - Largest Divisible Subset
+
+| Step | Action                                           |
+|------|--------------------------------------------------|
+| 1    | Sort the array                                   |
+| 2    | Loop through each number as a starting point     |
+| 3    | Try building a divisible subset from that point  |
+| 4    | Store all such subsets                           |
+| 5    | Print them for debugging                         |
+| 6    | Select the longest one                           |
+| 7    | Return that as the final result                  |
+
 
 **Code:-**
 
